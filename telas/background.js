@@ -7,8 +7,6 @@ const App = () => (
 
     <ImageBackground source={('./assets/background.png')} resizeMode="cover" style={styles.image}>
       <Text style={styles.text}>Adversarius</Text>
-      <Image source={require('./assets/background.png')} />;
-
     </ImageBackground>
   </View>
 );
