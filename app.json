@@ -27,7 +27,7 @@
       "package": "com.mayrons2.adversarius"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/adaptive-icon.png"
     }
   }
 }

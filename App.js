@@ -1,17 +1,12 @@
 import { StyleSheet, Text, View, ImageView, ImageBackground} from 'react-native';
 import Login from './telas/login.js';
-import Back from './telas/background.js';
+//import Fundo from './telas/fundo.js';
 
 export default function App() {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={require('./assets/background.png')} resizeMode="cover" style={styles.image}>
-        <Text>Inside ola mundo</Text>
-      </ImageBackground>
-        
-    
-        
+      <Login></Login>
     </View>
   );
 }
