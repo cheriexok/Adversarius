@@ -2,6 +2,8 @@ import { StyleSheet, Text, View, ImageView, ImageBackground } from 'react-native
 import Login from './telas/login.js';
 import Back from './telas/background.js';
 import Orgcad from './telas/orgCad.js';
+import Atletacad from './telas/atletaCad.js';
+import Orgatleta from './telas/orgAtle.js';
 
 export default function App() {
 
@@ -9,7 +11,7 @@ export default function App() {
     <View>
     <View style={styles.container}>
        <ImageBackground source={require('./assets/background.png')} resizeMode="cover" style={styles.image}>
-       <Orgcad/>
+       <Orgatleta/>
       </ImageBackground>
 
     
