@@ -4,20 +4,22 @@ import {
   StyleSheet, Text, View, Image, TextInput, ImageBackground, TouchableOpacity
 } from "react-native";
 
-export default function Login() {
+export default function Cad() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
     <View style={styles.flx}>
       <ImageBackground source={require('../assets/background.png')} style={styles.imageBackground}>
+          
          <View style={styles.container}> 
-         <Text style={styles.Texto}>Olá! Seja bem vindo</Text>
+
+         <Text style={styles.Texto}>Novo por aqui? Cadastre-se</Text>
           <Image style={styles.image} source={require("../assets/binoculo.png")} />
           <View style={styles.inputView, styles.cima}>
             <TextInput
               style={styles.TextInput}
-              placeholder="Email"
+              placeholder="Organizador"
               onChangeText={(email) => setEmail(email)}
             />
           </View>
@@ -25,18 +27,14 @@ export default function Login() {
           <View style={styles.inputView}>
             <TextInput
               style={styles.TextInput}
-              placeholder="Senha"
+              placeholder="Atleta"
               secureTextEntry={true}
               onChangeText={(password) => setPassword(password)}
             />
           </View>
 
-          <TouchableOpacity>
-            <Text style={styles.forgot_button}>Esqueceu sua senha?</Text>
-          </TouchableOpacity>
-
           <TouchableOpacity style={styles.loginBtn}>
-            <Text style={styles.loginText}>Entrar</Text>
+            <Text style={styles.loginText}>Próximo</Text>
           </TouchableOpacity>      
           </View>
         </ImageBackground>
@@ -83,7 +81,7 @@ const styles = StyleSheet.create({
     height: 50,
     flex: 1,
     padding: 10,
-    marginRight: 0,
+    marginRight: 90,
   },
   Texto: {
     marginTop: 160,
@@ -92,18 +90,13 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontFamily: "bold",
   },
-
-  forgot_button: {
-    height: 30,
-    marginBottom: 30,
-  },
   loginBtn: {
     width: "35%",
     borderRadius: 25,
     height: 45,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+    marginTop: 0,
     backgroundColor: "#F8F8FF",
   },
 

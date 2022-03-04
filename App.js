@@ -1,12 +1,11 @@
 import { StyleSheet, Text, View, ImageView, ImageBackground} from 'react-native';
 import Login from './telas/login.js';
-//import Fundo from './telas/fundo.js';
-
+import Cad from './telas/cad.js';
 export default function App() {
 
   return (
     <View style={styles.container}>
-      <Login></Login>
+      <Cad></Cad>
     </View>
   );
 }
