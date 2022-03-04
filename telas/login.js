@@ -11,10 +11,10 @@ export default function Login() {
   return (
     <View style={styles.flx}>
       <ImageBackground source={require('../assets/background.png')} style={styles.imageBackground}>
-         <View style={styles.container}>          
-         <Text style={styles.fonte}>Olá</Text> 
+         <View style={styles.container}> 
+         <Text style={styles.Texto}>Olá! Seja bem vindo</Text>
           <Image style={styles.image} source={require("../assets/binoculo.png")} />
-          <View style={styles.inputView}>
+          <View style={styles.inputView, styles.cima}>
             <TextInput
               style={styles.TextInput}
               placeholder="Email"
@@ -49,35 +49,47 @@ export default function Login() {
 
 const styles = StyleSheet.create({
   container: {
-    /*flex: 2,*/
-    /*backgroundColor: "#fff",*/
     alignItems: "center",
     justifyContent: "center",
     
   },
 
   image: {
-    marginBottom: 310,
+    marginBottom: 710,
     width: 150,
     height: 150,
-    
+    position: "absolute",    
   },
 
-  inputView: {
-    backgroundColor: "white",
+   inputView: {
+    backgroundColor: "#F8F8FF",
     borderRadius: 30,
     width: "70%",
     height: 45,
-    marginBottom: 60,
+    marginBottom: 20,
     alignItems: "center",
+  },
+  cima:{
+    backgroundColor: "#F8F8FF",
+    borderRadius: 30,
+    width: "70%",
+    height: 45,
+    marginBottom: 30,
+    alignItems: "center",
+    marginTop: 130,
   },
 
   TextInput: {
     height: 50,
     flex: 1,
     padding: 10,
-    marginRight: 50,
-    backgroundColor: "white",
+    marginLeft: 20,
+  },
+  Texto: {
+    marginTop: 160,
+    marginRight: 180,
+    fontSize: 30,
+    fontFamily: "bold",
   },
 
   forgot_button: {
@@ -85,29 +97,22 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   loginBtn: {
-    width: "80%",
+    width: "35%",
     borderRadius: 25,
-    height: 50,
+    height: 45,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "white",
+    marginTop: 20,
+    backgroundColor: "#F8F8FF",
   },
+
   imageBackground: {
     flex: 1,
     justifyContent: "center",
     resizeMode: "cover",
 
   },
-  imageForeground: {
-    width: 250,
-    height: 250
-  },
-
   flx: {
     flex: 2
-  },
-  fonte: {
-    fontFamily: "bold",
-    
   }
 });
