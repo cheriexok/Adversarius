@@ -1,41 +1,35 @@
-import { bold } from "colorette";
 import React, { useState } from "react";
+import { bold } from "colorette";
 import {
-  StyleSheet, Text, View, Image, TextInput, ImageBackground, TouchableOpacity
+  StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity
 } from "react-native";
 
-export default function Cad() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
     <View style={styles.flx}>
       <ImageBackground source={require('../assets/background.png')} style={styles.imageBackground}>
-          
          <View style={styles.container}> 
+         
+         <Text style={styles.Texto}>Olá, novo por aqui?
+Crie sua conta!</Text>
 
-         <Text style={styles.Texto}>Novo por aqui? Cadastre-se</Text>
           <Image style={styles.image} source={require("../assets/binoculo.png")} />
-          <View style={styles.inputView, styles.cima}>
-            <TextInput
-              style={styles.TextInput}
-              placeholder="Organizador"
-              onChangeText={(email) => setEmail(email)}
-            />
-          </View>
 
-          <View style={styles.inputView}>
-            <TextInput
-              style={styles.TextInput}
-              placeholder="Atleta"
-              secureTextEntry={true}
-              onChangeText={(password) => setPassword(password)}
-            />
-          </View>
+          <TouchableOpacity style={styles.Btn}>
+        <Text style={styles.Texto1}>Organizador</Text>
+      </TouchableOpacity>
+      
+      <TouchableOpacity style={styles.Btn, styles.baixo}>
+        <Text style={styles.Texto1}>Atleta</Text>
+      </TouchableOpacity>
 
-          <TouchableOpacity style={styles.loginBtn}>
-            <Text style={styles.loginText}>Próximo</Text>
-          </TouchableOpacity>      
+      <TouchableOpacity  style={styles.Entre}>
+        <Text style={styles.Texto1}>Já tem uma conta? Entre.</Text>
+      </TouchableOpacity>
+
           </View>
         </ImageBackground>
     </View>
@@ -49,7 +43,6 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-    
   },
 
   image: {
@@ -58,48 +51,36 @@ const styles = StyleSheet.create({
     height: 150,
     position: "absolute",    
   },
-
-   inputView: {
-    backgroundColor: "#F8F8FF",
-    borderRadius: 30,
-    width: "70%",
-    height: 45,
-    marginBottom: 20,
-    alignItems: "center",
-  },
-  cima:{
-    backgroundColor: "#F8F8FF",
-    borderRadius: 30,
-    width: "70%",
-    height: 45,
-    marginBottom: 30,
-    alignItems: "center",
-    marginTop: 130,
-  },
-
-  TextInput: {
-    height: 50,
-    flex: 1,
-    padding: 10,
-    marginRight: 90,
-  },
   Texto: {
-    marginTop: 160,
+    marginTop: 130,
+    marginBottom: 50,
     marginLeft: 30,
     marginRight: 180,
-    fontSize: 30,
-    fontFamily: "bold",
-  },
-  loginBtn: {
-    width: "35%",
+    fontSize: 35,
+    fontWeight: "bold",
+},
+Texto1:{
+    fontWeight: "bold",
+    fontSize: 19,
+},
+  Btn: {
+    width: "70%",
     borderRadius: 25,
-    height: 45,
+    height: 50,
     alignItems: "center",
+    marginVertical: 30,
     justifyContent: "center",
-    marginTop: 0,
     backgroundColor: "#F8F8FF",
   },
-
+  baixo: {
+    alignItems: "center",
+    width: "70%",
+    height: 50,
+    borderRadius: 25,
+    justifyContent: "center",
+    backgroundColor: "#F8F8FF",
+    marginTop: 40,
+  },
   imageBackground: {
     flex: 1,
     justifyContent: "center",
@@ -108,5 +89,8 @@ const styles = StyleSheet.create({
   },
   flx: {
     flex: 2
+  },
+  Entre: {
+      marginTop: 107.5,
   }
 });

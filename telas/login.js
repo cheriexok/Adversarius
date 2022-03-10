@@ -12,7 +12,7 @@ export default function Login() {
     <View style={styles.flx}>
       <ImageBackground source={require('../assets/background.png')} style={styles.imageBackground}>
          <View style={styles.container}> 
-         <Text style={styles.Texto}>Olá! Seja bem vindo</Text>
+         <Text style={styles.Texto}>Olá! Seja bem vindo!</Text>
           <Image style={styles.image} source={require("../assets/binoculo.png")} />
           <View style={styles.inputView, styles.cima}>
             <TextInput
@@ -36,8 +36,13 @@ export default function Login() {
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.loginBtn}>
-            <Text style={styles.loginText}>Entrar</Text>
-          </TouchableOpacity>      
+            <Text>Entrar</Text>
+          </TouchableOpacity>  
+
+          <TouchableOpacity  style={styles.Entre}>
+        <Text style={styles.cima1}>Novo por aqui? Entre.</Text>
+      </TouchableOpacity>
+
           </View>
         </ImageBackground>
     </View>
@@ -61,6 +66,11 @@ const styles = StyleSheet.create({
     position: "absolute",    
   },
 
+  cima1: {
+    marginTop: 50,
+    fontWeight: "bold",
+  },
+
    inputView: {
     backgroundColor: "#F8F8FF",
     borderRadius: 30,
@@ -76,7 +86,7 @@ const styles = StyleSheet.create({
     height: 45,
     marginBottom: 30,
     alignItems: "center",
-    marginTop: 130,
+    marginTop: 100,
   },
 
   TextInput: {
@@ -84,18 +94,23 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     marginRight: 0,
+    fontWeight: "bold",
+
   },
   Texto: {
     marginTop: 160,
     marginLeft: 30,
     marginRight: 180,
     fontSize: 30,
-    fontFamily: "bold",
+    fontWeight: "bold",
+    color: "black",
   },
 
   forgot_button: {
     height: 30,
     marginBottom: 30,
+    marginBottom: 50,
+    fontWeight: "bold",
   },
   loginBtn: {
     width: "35%",
@@ -105,6 +120,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 20,
     backgroundColor: "#F8F8FF",
+    color: "black",
+    fontWeight: "bold",
   },
 
   imageBackground: {
