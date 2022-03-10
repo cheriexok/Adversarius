@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { bold } from "colorette";
-import {
-  StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity
+import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity
 } from "react-native";
 
-export default function Login() {
+export default function Cad() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -12,7 +10,6 @@ export default function Login() {
     <View style={styles.flx}>
       <ImageBackground source={require('../assets/background.png')} style={styles.imageBackground}>
          <View style={styles.container}> 
-         
          <Text style={styles.Texto}>Olá, novo por aqui?
 Crie sua conta!</Text>
 

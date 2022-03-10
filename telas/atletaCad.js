@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -8,82 +7,80 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  ImageBackground
 } from "react-native";
 
-export default function Atletacad() {
+export default function AtletaCad() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [cpf, setCpf] = useState("");
 
   return (
-    <View style={styles.container}>
-      <Image style={styles.image} source={require("../assets/log2.png")} />
+    <View style={styles.flx}>
+      <ImageBackground source={require('../assets/background.png')} style={styles.imageBackground}>
+      <View style={styles.container}>
+        <Image style={styles.image} source={require("../assets/binoculo.png")} />
+        <Text style={styles.title}>Informe seus dados!</Text>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Nome"
+            placeholderTextColor="black"
+            onChangeText={(nome) => setNome(nome)}
+          />
+        </View>
 
-     <Text style={styles.title}>Informe seus dados!</Text>
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="E-mail"
+            placeholderTextColor="black"
+            onChangeText={(email) => setEmail(email)}
+          />
+        </View>
 
-      <StatusBar style="auto" />
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Nome"
-          placeholderTextColor="black"
-          onChangeText={(nome) => setNome(nome)}
-        />
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Senha"
+            placeholderTextColor="black"
+            secureTextEntry={true}
+            onChangeText={(senha) => setSenha(senha)}
+          />
+        </View>
+
+        <View style={styles.inputView}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="CPF"
+            placeholderTextColor="black"
+            onChangeText={(cpf) => setCpf(cpf)}
+          />
+        </View>
+
+        <TouchableOpacity style={styles.loginBtn}>
+          <Text>Próximo</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>
+        </TouchableOpacity>
+
       </View>
-
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="E-mail"
-          placeholderTextColor="black"
-          onChangeText={(email) => setEmail(email)}
-        />
-      </View>
-
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Senha"
-          placeholderTextColor="black"
-          secureTextEntry={true}
-          onChangeText={(senha) => setSenha(senha)}
-        />
-      </View>
-
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="CPF"
-          placeholderTextColor="black"
-          onChangeText={(cpf) => setCpf(cpf)}
-        />
-      </View>
-       
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>Próximo</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity>
-        <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>
-      </TouchableOpacity>
-
- 
+      </ImageBackground>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "B8EE5A",
     alignItems: "center",
     justifyContent: "center",
   },
 
   image: {
-    marginTop: 0,
-    marginBottom: 180,
+    marginBottom: 140,
     width: 150,
     height: 150,
   },
@@ -94,8 +91,9 @@ const styles = StyleSheet.create({
     width: "70%",
     height: 45,
     marginBottom: 20,
-
     alignItems: "center",
+    fontWeight: "bold",
+
   },
 
   TextInput: {
@@ -103,30 +101,48 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     marginLeft: 20,
+    fontWeight: "bold",
+
   },
 
   forgot_button: {
-    height: 30,
-    marginBottom: 30,
+    fontWeight: "bold",
+
   },
 
   loginBtn: {
     width: "35%",
+    fontWeight: "bold",
     borderRadius: 25,
     height: 45,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
+    marginBottom: 40,
     backgroundColor: "#F8F8FF",
+
   },
-  
+
   title: {
-    height: 50,
-    fontSize: 28,
+    marginLeft: 30,
+    marginRight: 180,
+    fontSize: 30,
     marginBottom: 50,
     alignItems: "center",
     justifyContent: "center",
+    fontWeight: "bold",
 
+
+  },
+  imageBackground: {
+    flex: 1,
+    justifyContent: "center",
+    resizeMode: "cover",
+    
+
+  },
+  flx: {
+    flex: 2
   }
-
 });
+

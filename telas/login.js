@@ -11,10 +11,10 @@ export default function Login() {
   return (
     <View style={styles.flx}>
       <ImageBackground source={require('../assets/background.png')} style={styles.imageBackground}>
-         <View style={styles.container}> 
-         <Text style={styles.Texto}>Olá! Seja bem vindo!</Text>
+        <View style={styles.container}>
           <Image style={styles.image} source={require("../assets/binoculo.png")} />
-          <View style={styles.inputView, styles.cima}>
+          <Text style={styles.Texto}>Login</Text>
+          <View style={styles.inputView, styles.email}>
             <TextInput
               style={styles.TextInput}
               placeholder="Email"
@@ -22,7 +22,7 @@ export default function Login() {
             />
           </View>
 
-          <View style={styles.inputView}>
+          <View style={styles.senha}>
             <TextInput
               style={styles.TextInput}
               placeholder="Senha"
@@ -35,19 +35,19 @@ export default function Login() {
             <Text style={styles.forgot_button}>Esqueceu sua senha?</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.loginBtn}>
+          <TouchableOpacity style={styles.Entrar}>
             <Text>Entrar</Text>
-          </TouchableOpacity>  
+          </TouchableOpacity>
 
-          <TouchableOpacity  style={styles.Entre}>
-        <Text style={styles.cima1}>Novo por aqui? Entre.</Text>
-      </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.cadastre}>Novo por aqui? Cadastre-se.</Text>
+          </TouchableOpacity>
 
-          </View>
-        </ImageBackground>
+        </View>
+      </ImageBackground>
     </View>
-         
-   
+
+
 
   );
 }
@@ -56,72 +56,72 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-    
+
   },
 
   image: {
-    marginBottom: 710,
+    marginBottom: 140,
     width: 150,
     height: 150,
-    position: "absolute",    
   },
 
-  cima1: {
+  cadastre: {
     marginTop: 50,
     fontWeight: "bold",
   },
 
-   inputView: {
+  email: {
     backgroundColor: "#F8F8FF",
     borderRadius: 30,
     width: "70%",
     height: 45,
-    marginBottom: 20,
+    justifyContent: "center",
     alignItems: "center",
-  },
-  cima:{
-    backgroundColor: "#F8F8FF",
-    borderRadius: 30,
-    width: "70%",
-    height: 45,
-    marginBottom: 30,
-    alignItems: "center",
-    marginTop: 100,
-  },
+    marginBottom: 40,
+    marginTop: 50,
 
+  },
+  
   TextInput: {
-    height: 50,
-    flex: 1,
-    padding: 10,
-    marginRight: 0,
     fontWeight: "bold",
-
   },
+
+  senha: {
+    backgroundColor: "#F8F8FF",
+    borderRadius: 30,
+    width: "70%",
+    height: 45,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 40,
+  },
+
   Texto: {
-    marginTop: 160,
     marginLeft: 30,
     marginRight: 180,
+    marginVertical: 40,
     fontSize: 30,
+    marginBottom: 50,
+    alignItems: "center",
+    justifyContent: "center",
     fontWeight: "bold",
-    color: "black",
   },
 
+
   forgot_button: {
-    height: 30,
     marginBottom: 30,
-    marginBottom: 50,
     fontWeight: "bold",
+
   },
-  loginBtn: {
+
+  Entrar: {
     width: "35%",
+    fontWeight: "bold",
     borderRadius: 25,
     height: 45,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
     backgroundColor: "#F8F8FF",
-    color: "black",
-    fontWeight: "bold",
   },
 
   imageBackground: {
