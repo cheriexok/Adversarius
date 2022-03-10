@@ -9,59 +9,59 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
+import { bounce } from "react-native/Libraries/Animated/Easing";
 
-export default function Atletacad() {
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [cpf, setCpf] = useState("");
+export default function Atletacadfinal() {
+  const [tel, setTel] = useState("");
+  const [peso, setPeso] = useState("");
+  const [altura, setAltura] = useState("");
+  const [dtnasci, setDtnasci] = useState("");
 
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={require("../assets/log2.png")} />
+      <Image style={styles.image} source={require("../assets/binoculo.png")} />
 
-     <Text style={styles.title}>Informe seus dados!</Text>
+     <Text style={styles.title}>Complete seu cadastro!</Text>
 
       <StatusBar style="auto" />
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Nome"
+          placeholder="Telefone"
           placeholderTextColor="black"
-          onChangeText={(nome) => setNome(nome)}
+          onChangeText={(tel) => setTel(tel)}
         />
       </View>
 
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="E-mail"
+          placeholder="Peso"
           placeholderTextColor="black"
-          onChangeText={(email) => setEmail(email)}
+          onChangeText={(peso) => setPeso(peso)}
         />
       </View>
 
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Senha"
+          placeholder="Altura"
           placeholderTextColor="black"
-          secureTextEntry={true}
-          onChangeText={(senha) => setSenha(senha)}
+          onChangeText={(altura) => setAltura(altura)}
         />
       </View>
 
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="CPF"
+          placeholder="Data de nascimento"
           placeholderTextColor="black"
-          onChangeText={(cpf) => setCpf(cpf)}
+          onChangeText={(dtnasci) => setDtnasci(dtnasci)}
         />
       </View>
        
       <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>Próximo</Text>
+        <Text style={styles.loginText}>Criar</Text>
       </TouchableOpacity>
 
       <TouchableOpacity>
@@ -126,6 +126,7 @@ const styles = StyleSheet.create({
     marginBottom: 50,
     alignItems: "center",
     justifyContent: "center",
+    fontWeight: "bold",
 
   }
 
