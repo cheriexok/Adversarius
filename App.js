@@ -1,8 +1,8 @@
 import { StyleSheet, View } from 'react-native';
-import Login from './telas/login.js';
-import Cad from './telas/cad.js';
-import AtletaCad from './telas/atletaCad.js'
-import OrgCad from './telas/orgCad.js';
+import Login from './telas/1login.js';
+import Cad from './telas/2cad.js';
+import AtletaCad from './telas/3atletaCad.js'
+import OrgCad from './telas/4orgCad.js';
 
 export default function App() {
 
