@@ -45,7 +45,6 @@ export default function Peneirac() {
             style={styles.TextInput}
             placeholder="Data"
             placeholderTextColor="black"
-            secureTextEntry={true}
             onChangeText={(data) => setData(data)}
           />
         </View>
