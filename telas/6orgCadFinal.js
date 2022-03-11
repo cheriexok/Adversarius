@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import { bounce } from "react-native/Libraries/Animated/Easing";
 
-export default function Atletacadfinal() {
+export default function Orgcadfinal() {
   const [tel, setTel] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [dtnasci, setDtnasci] = useState("");
