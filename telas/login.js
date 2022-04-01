@@ -1,8 +1,5 @@
-import { bold } from "colorette";
 import React, { useState } from "react";
-import {
-  StyleSheet, Text, View, Image, TextInput, ImageBackground, TouchableOpacity
-} from "react-native";
+import { StyleSheet, Text, View, Image, TextInput, ImageBackground, TouchableOpacity} from "react-native";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -10,11 +7,11 @@ export default function Login() {
 
   return (
     <View style={styles.flx}>
-      <ImageBackground source={require('../assets/background.png')} style={styles.imageBackground}>
+      <ImageBackground source={require('../assets/imgs/background.png')} style={styles.imageBackground}>
          <View style={styles.container}> 
          <Text style={styles.Texto}>Olá! Seja bem vindo</Text>
-          <Image style={styles.image} source={require("../assets/binoculo.png")} />
-          <View style={styles.inputView, styles.cima}>
+          <Image style={styles.image} source={require("../assets/imgs/binoculo.png")} />
+          <View style={styles.inputView && styles.cima}>
             <TextInput
               style={styles.TextInput}
               placeholder="Email"

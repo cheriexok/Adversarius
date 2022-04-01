@@ -1,22 +1,33 @@
-import { StyleSheet, Text, View, ImageView, ImageBackground} from 'react-native';
-import Login from './telas/login.js';
-import Cad from './telas/cad.js';
+import React from 'react';
+import {Image, ImageBackground, StyleSheet} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+import SelectS from './telas/SelectS';
+import CriaPCS from './telas/CriaPCS';
+import Login from './telas/Login';
+
+import ActionBarImage from './telas/ActionBarImage';
+
+const Drawer = createDrawerNavigator();
+
 export default function App() {
-
   return (
-    <View style={styles.container}>
-      <Cad></Cad>
-    </View>
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Login" screenOptions={{headerRight: () => <ActionBarImage />}}>
+        <Drawer.Screen name="Select" component={SelectS}/>
+        <Drawer.Screen name="CriaPCS" component={CriaPCS} />
+        <Drawer.Screen name="Login" component={Login} />
+      </Drawer.Navigator>
+
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-
-  },
-  image:{
-    flex: 1,
-    justifyContent: "center"
-  }
-});
+ const styles = StyleSheet.create({
+    image: {
+      height: 100,
+      width: 100,
+      position: 'absolute'
+    }
+  })

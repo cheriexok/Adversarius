@@ -1,4 +1,3 @@
-import { bold } from "colorette";
 import React, { useState } from "react";
 import {
   StyleSheet, Text, View, Image, TextInput, ImageBackground, TouchableOpacity
@@ -16,7 +15,7 @@ export default function Cad() {
 
          <Text style={styles.Texto}>Novo por aqui? Cadastre-se</Text>
           <Image style={styles.image} source={require("../assets/binoculo.png")} />
-          <View style={styles.inputView, styles.cima}>
+          <View style={styles.inputView && styles.cima}>
             <TextInput
               style={styles.TextInput}
               placeholder="Organizador"
