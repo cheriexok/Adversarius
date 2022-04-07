@@ -9,12 +9,12 @@ export default function Cad() {
 
   return (
     <View style={styles.flx}>
-      <ImageBackground source={require('../assets/background.png')} style={styles.imageBackground}>
+      <ImageBackground source={require('../assets/imgs/background.png')} style={styles.imageBackground}>
           
          <View style={styles.container}> 
 
          <Text style={styles.Texto}>Novo por aqui? Cadastre-se</Text>
-          <Image style={styles.image} source={require("../assets/binoculo.png")} />
+          <Image style={styles.image} source={require("../assets/imgs/binoculo.png")} />
           <View style={styles.inputView && styles.cima}>
             <TextInput
               style={styles.TextInput}
