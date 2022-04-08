@@ -5,7 +5,7 @@ import { Picker } from "@react-native-picker/picker";
 
 export default function CriaPCS({ navigation }) {
 
-  const [Sport, setSport] = useState(['Futebol','Voley','Tennis']);
+  const [Sport, setSport] = useState(['Futebol','Volei','Tennis']);
   const [selectsport, setSelectSport] = useState('Sport')
 
     return (
