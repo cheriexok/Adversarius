@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -6,23 +5,21 @@ import {
   View,
   Image,
   TextInput,
-  Button,
   TouchableOpacity,
+  ImageBackground
 } from "react-native";
-import { bounce } from "react-native/Libraries/Animated/Easing";
 
-export default function Atletacadfinal() {
+export default function Orgcadfinal() {
   const [tel, setTel] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [dtnasci, setDtnasci] = useState("");
 
   return (
-    <View style={styles.container}>
-      <Image style={styles.image} source={require("../assets/binoculo.png")} />
-
+    <View style={styles.flx}>
+    <ImageBackground source={require('../assets/background.png')} style={styles.imageBackground}>
+      <View style={styles.container}>
+        <Image style={styles.image} source={require("../assets/binoculo.png")} />
      <Text style={styles.title}>Complete seu cadastro!</Text>
-
-      <StatusBar style="auto" />
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -57,8 +54,8 @@ export default function Atletacadfinal() {
       <TouchableOpacity>
         <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>
       </TouchableOpacity>
-
- 
+      </View>
+      </ImageBackground>
     </View>
   );
 }
@@ -77,6 +74,10 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
   },
+  
+  loginText: {
+    fontWeight: "bold",
+  },
 
   inputView: {
     backgroundColor: "#F8F8FF",
@@ -84,8 +85,9 @@ const styles = StyleSheet.create({
     width: "70%",
     height: 45,
     marginBottom: 20,
-
     alignItems: "center",
+    fontWeight: "bold",
+
   },
 
   TextInput: {
@@ -93,11 +95,14 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     marginLeft: 20,
+    fontWeight: "bold",
   },
 
   forgot_button: {
     height: 30,
     marginBottom: 30,
+    fontWeight: "bold",
+    marginTop: 40,
   },
 
   loginBtn: {
@@ -108,6 +113,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 40,
     backgroundColor: "#F8F8FF",
+    fontWeight: "bold",
+
   },
   
   title: {
@@ -118,6 +125,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     fontWeight: "bold",
 
+  },
+  imageBackground: {
+    flex: 1,
+    justifyContent: "center",
+    resizeMode: "cover",
+
+  },
+  flx: {
+    flex: 2
   }
 
 });
