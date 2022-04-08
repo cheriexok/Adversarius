@@ -9,7 +9,7 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
-import { bounce } from "react-native/Libraries/Animated/Easing";
+//import { bounce } from "react-native/Libraries/Animated/Easing";
 
 export default function Orgcadfinal() {
   const [tel, setTel] = useState("");
