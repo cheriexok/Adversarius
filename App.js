@@ -3,12 +3,13 @@ import Login from './telas/1login.js';
 import Cad from './telas/2cad.js';
 import AtletaCad from './telas/3atletaCad.js'
 import OrgCad from './telas/4orgCad.js';
+import Perfil from './telas/5perfil.js';
 
 export default function App() {
 
   return (
     <View style={styles.container}>
-      <OrgCad/>
+      <Perfil/>
     </View>
   );
 }
