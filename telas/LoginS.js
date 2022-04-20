@@ -41,10 +41,10 @@ export default function Login({ navigation }) {
                     <Text style={styles.Texto} >{message}</Text>
                 )}
                 <View style={styles.kk}>
-                    <Image source={require('../assets/imgs/binoculo.png')} style={styles.image} resizeMode='stretch' ></Image>
+                    <Image source={require('../assets/imgs/login.png')} style={styles.image} resizeMode='stretch' ></Image>
                 </View>
                 <Text style={styles.Texto}>Login</Text>
-
+                <Separator/>    
                 <TextInput
                     style={styles.TextI}
                     placeholder="USUÁRIO"
@@ -52,6 +52,8 @@ export default function Login({ navigation }) {
                     onChangeText={(text) => setUser(text)}
                 />
                 <Separator />
+                <Separator/> 
+                
                 <TextInput
                     style={styles.TextI}
                     placeholder="SENHA"
@@ -62,9 +64,12 @@ export default function Login({ navigation }) {
                 <Separator />
                 <Separator />
                 <Separator />
+                <Separator2/>
                 <WhiteButton text="Entrar" onPress={() => navigation.navigate('')} />
                 <Separator />
                 <WhiteButton text="Cadastre-se" onPress={() => navigation.navigate('Cadastro')} />
+
+                <Separator2/>
                 {/*<TouchableOpacity onPress={() => (navigation.navigate('TelaInicial'))}><Text>Fingir Login</Text></TouchableOpacity>*/}
             </ImageBackground>
         </View>
@@ -97,6 +102,12 @@ const styles = StyleSheet.create({
 
     },
 
+    separator2: {
+        marginVertical: 35,
+
+    },
+
+
     Texto: {
         marginBottom: '10% ',
         fontSize: 35,
@@ -120,4 +131,8 @@ const styles = StyleSheet.create({
 
 const Separator = () => (
     <View style={styles.separator} />
+);
+
+const Separator2 = () => (
+    <View style={styles.separator2} />
 );
