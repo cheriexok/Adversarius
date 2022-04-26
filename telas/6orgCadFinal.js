@@ -10,8 +10,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { bounce } from "react-native/Libraries/Animated/Easing";
+import WhiteButton from "../assets/functions/WhiteButton";
 
-export default function Orgcadfinal() {
+export default function Orgcadfinal({ navigation }) {
   const [tel, setTel] = useState("");
   const [cnpj, setCnpj] = useState("");
   const [dtnasci, setDtnasci] = useState("");
@@ -50,9 +51,7 @@ export default function Orgcadfinal() {
         />
       </View>
        
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>Criar</Text>
-      </TouchableOpacity>
+      <WhiteButton text="Criar" onPress={() => navigation.navigate('Select')} />
 
       <TouchableOpacity>
         <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>

@@ -10,8 +10,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { bounce } from "react-native/Libraries/Animated/Easing";
+import WhiteButton from "../assets/functions/WhiteButton";
 
-export default function Atletacadfinal() {
+export default function Atletacadfinal({ navigation }) {
   const [tel, setTel] = useState("");
   const [peso, setPeso] = useState("");
   const [altura, setAltura] = useState("");
@@ -61,9 +62,7 @@ export default function Atletacadfinal() {
             />
           </View>
 
-          <TouchableOpacity style={styles.loginBtn}>
-            <Text style={styles.loginText}>Criar</Text>
-          </TouchableOpacity>
+          <WhiteButton text="Criar" onPress={() => navigation.navigate('Select')} />
 
           <TouchableOpacity>
             <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>

@@ -11,7 +11,7 @@ export default function CriaPCS({ navigation }) {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <ImageBackground source={require('../assets/imgs/background2.png')} resizeMode="stretch" style={styles.image} >
-          <Text style={styles.Texto}>Crie sua peneira ou campeonato!</Text>
+          <Text style={styles.Texto}>Crie sua peneira!</Text>
           <View >
             <Picker
               style={styles.TextI}
@@ -34,7 +34,7 @@ export default function CriaPCS({ navigation }) {
               style={styles.TextI}
             />
             <Separator/>
-            <WhiteButton text="Próximo" onPress={() => navigation.navigate('')}/>
+            <WhiteButton text="Próximo" onPress={() => navigation.navigate('Peneira')}/>
           </View>
         </ImageBackground>   
       </View>

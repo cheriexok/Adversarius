@@ -9,8 +9,9 @@ import {
   TouchableOpacity,
   ImageBackground
 } from "react-native";
+import WhiteButton from "../assets/functions/WhiteButton";
 
-export default function OrgCad() {
+export default function OrgCad({ navigation }) {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -59,9 +60,7 @@ export default function OrgCad() {
           />
         </View>
 
-        <TouchableOpacity style={styles.loginBtn}>
-          <Text>Próximo</Text>
-        </TouchableOpacity>
+        <WhiteButton text="Próximo" onPress={() => navigation.navigate('Orgfinal')} />
 
         <TouchableOpacity>
           <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>

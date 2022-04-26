@@ -13,6 +13,8 @@ import Perfil from './telas/Perfil';
 import Cad from './telas/2cad';
 import Atletacadfinal from './telas/4atletaCadFinal';
 import Orgcadfinal from './telas/6orgCadFinal';
+import Peneirac from './telas/peneira2';
+import Camp from './telas/CampS';
 
 
 import ActionBarImage from './telas/ActionBarImage';
@@ -36,6 +38,11 @@ export function RootNavigation() {
       <Stack.Screen name='Organização' component={OrgCad} />
       <Stack.Screen name='Atleta' component={AtletaCad} />
       <Stack.Screen name='Atletafinal' component={Atletacadfinal} />
+      <Stack.Screen name='Orgfinal' component={Orgcadfinal} />
+      <Stack.Screen name='Select' component={SelectS} />
+      <Stack.Screen name='Camp' component={Camp} />
+      <Stack.Screen name='Pcs' component={CriaPCS} />
+      <Stack.Screen name='Peneira' component={Peneirac} />
       <Stack.Screen
         name='TelaInicial'
         component={InitialRoute}
