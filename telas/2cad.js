@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity
+import { StyleSheet, Text, View, Image, ImageBackground, TouchableOpacity,
 } from "react-native";
+import WhiteButton from "../assets/functions/WhiteButton";
 
-export default function Cad() {
+export default function Cad({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,13 +16,13 @@ Crie sua conta!</Text>
 
           <Image style={styles.image} source={require("../assets/imgs/binoculo.png")} />
 
-          <TouchableOpacity style={styles.Btn}>
-        <Text style={styles.Texto1}>Organizador</Text>
-      </TouchableOpacity>
+         
+        
+        <WhiteButton text="Organizador" onPress={() => navigation.navigate('Organização')} />
+    
       
-      <TouchableOpacity style={styles.Btn && styles.baixo}>
-        <Text style={styles.Texto1}>Atleta</Text>
-      </TouchableOpacity>
+        <WhiteButton text="Atleta" onPress={() => navigation.navigate('Atleta')} />
+    
 
       <TouchableOpacity  style={styles.Entre}>
         <Text style={styles.Texto1}>Já tem uma conta? Entre.</Text>

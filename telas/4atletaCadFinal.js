@@ -18,58 +18,60 @@ export default function Atletacadfinal() {
   const [dtnasci, setDtnasci] = useState("");
 
   return (
-    <View style={styles.container}>
-      <Image style={styles.image} source={require("../assets/imgs/binoculo.png")} />
+   
+        <View style={styles.container}>
+          <Image style={styles.image} source={require("../assets/imgs/binoculo.png")} />
 
-     <Text style={styles.title}>Complete seu cadastro!</Text>
+          <Text style={styles.title}>Complete seu cadastro!</Text>
 
-      <StatusBar style="auto" />
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Telefone"
-          placeholderTextColor="black"
-          onChangeText={(tel) => setTel(tel)}
-        />
-      </View>
+          <StatusBar style="auto" />
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Telefone"
+              placeholderTextColor="black"
+              onChangeText={(tel) => setTel(tel)}
+            />
+          </View>
 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Peso"
-          placeholderTextColor="black"
-          onChangeText={(peso) => setPeso(peso)}
-        />
-      </View>
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Peso"
+              placeholderTextColor="black"
+              onChangeText={(peso) => setPeso(peso)}
+            />
+          </View>
 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Altura"
-          placeholderTextColor="black"
-          onChangeText={(altura) => setAltura(altura)}
-        />
-      </View>
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Altura"
+              placeholderTextColor="black"
+              onChangeText={(altura) => setAltura(altura)}
+            />
+          </View>
 
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles.TextInput}
-          placeholder="Data de nascimento"
-          placeholderTextColor="black"
-          onChangeText={(dtnasci) => setDtnasci(dtnasci)}
-        />
-      </View>
-       
-      <TouchableOpacity style={styles.loginBtn}>
-        <Text style={styles.loginText}>Criar</Text>
-      </TouchableOpacity>
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Data de nascimento"
+              placeholderTextColor="black"
+              onChangeText={(dtnasci) => setDtnasci(dtnasci)}
+            />
+          </View>
 
-      <TouchableOpacity>
-        <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>
-      </TouchableOpacity>
+          <TouchableOpacity style={styles.loginBtn}>
+            <Text style={styles.loginText}>Criar</Text>
+          </TouchableOpacity>
 
- 
-    </View>
+          <TouchableOpacity>
+            <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>
+          </TouchableOpacity>
+
+
+        </View>
+    
   );
 }
 
@@ -119,7 +121,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     backgroundColor: "#F8F8FF",
   },
-  
+
   title: {
     height: 50,
     fontSize: 28,
@@ -127,6 +129,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     fontWeight: "bold",
+
+  },
+  flx: {
+    flex: 2
+  },
+  imageBackground: {
+    flex: 1,
+    justifyContent: "center",
+    resizeMode: "cover",
+    
 
   }
 

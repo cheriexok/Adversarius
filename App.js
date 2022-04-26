@@ -12,6 +12,8 @@ import Exibepeneira from './telas/exibepeneira';
 import Perfil from './telas/Perfil';
 import Cad from './telas/2cad';
 import Atletacadfinal from './telas/4atletaCadFinal';
+import Orgcadfinal from './telas/6orgCadFinal';
+
 
 import ActionBarImage from './telas/ActionBarImage';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -31,6 +33,9 @@ export function RootNavigation() {
     <Stack.Navigator initialRouteName="Login" screenOptions={{ headerRight: () => <ActionBarImage /> }} useLegacyImplementation={true}>
       <Stack.Screen name="Login" component={Login} /*options={{drawerHideStatusBarTrue}}*/ />
       <Stack.Screen name='Cadastro' component={Cad} />
+      <Stack.Screen name='Organização' component={OrgCad} />
+      <Stack.Screen name='Atleta' component={AtletaCad} />
+      <Stack.Screen name='Atletafinal' component={Atletacadfinal} />
       <Stack.Screen
         name='TelaInicial'
         component={InitialRoute}
