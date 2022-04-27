@@ -20,7 +20,7 @@ export default function Peneirac() {
     <View style={styles.flx}>
       <ImageBackground source={require('../assets/imgs/background.png')} style={styles.imageBackground}>
       <View style={styles.container}>
-        <Image style={styles.image} source={require("../assets/imgs/binoculo.png")} />
+     
         <Text style={styles.title}>Complemente os dados!</Text>
         <View style={styles.inputView}>
           <TextInput

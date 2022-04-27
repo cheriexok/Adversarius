@@ -16,9 +16,9 @@ export default function SelectS({ navigation }) {
             onPress={() => navigation.popToTop()}
           />*/}
           <View style={styles.Fbutton}>
-            <FlatButton text="Campeonatos" onPress={() => navigation.push('Camp')}/>
+            <FlatButton text="Campeonatos" onPress={() => navigation.push('Campeonato')}/>
             <Separator/>
-            <FlatButton text="Peneiras" onPress={() => navigation.navigate('Pcs')}/>
+            <FlatButton text="Peneiras" onPress={() => navigation.navigate('Peneira')}/>
           </View>
         </ImageBackground>   
       </View>

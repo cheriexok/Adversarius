@@ -8,6 +8,7 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  ImageBackground,
 } from "react-native";
 import { bounce } from "react-native/Libraries/Animated/Easing";
 import WhiteButton from "../assets/functions/WhiteButton";
@@ -19,9 +20,11 @@ export default function Atletacadfinal({ navigation }) {
   const [dtnasci, setDtnasci] = useState("");
 
   return (
-   
+
+    <View style={styles.flx}>
+      <ImageBackground source={require('../assets/imgs/background.png')} style={styles.imageBackground}>
         <View style={styles.container}>
-          <Image style={styles.image} source={require("../assets/imgs/binoculo.png")} />
+
 
           <Text style={styles.title}>Complete seu cadastro!</Text>
 
@@ -62,7 +65,11 @@ export default function Atletacadfinal({ navigation }) {
             />
           </View>
 
-          <WhiteButton text="Criar" onPress={() => navigation.navigate('Select')} />
+          <View style={styles.button}>
+            <View style={styles.buttonText}>
+              <WhiteButton text="Criar" onPress={() => navigation.navigate('Select')} />
+            </View>
+          </View>
 
           <TouchableOpacity>
             <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>
@@ -70,21 +77,20 @@ export default function Atletacadfinal({ navigation }) {
 
 
         </View>
-    
+      </ImageBackground>
+    </View>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "B8EE5A",
     alignItems: "center",
     justifyContent: "center",
   },
 
   image: {
-    marginTop: 0,
-    marginBottom: 180,
+    marginBottom: 140,
     width: 150,
     height: 150,
   },
@@ -95,8 +101,9 @@ const styles = StyleSheet.create({
     width: "70%",
     height: 45,
     marginBottom: 20,
-
     alignItems: "center",
+    fontWeight: "bold",
+
   },
 
   TextInput: {
@@ -104,41 +111,67 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     marginLeft: 20,
+    fontWeight: "bold",
+
   },
 
   forgot_button: {
-    height: 30,
-    marginBottom: 30,
+    fontWeight: "bold",
+    fontSize: 18,
+
   },
 
   loginBtn: {
     width: "35%",
+    fontWeight: "bold",
     borderRadius: 25,
     height: 45,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 40,
+    marginBottom: 40,
     backgroundColor: "#F8F8FF",
+
   },
 
   title: {
-    height: 50,
-    fontSize: 28,
+    marginLeft: 30,
+    marginRight: 180,
+    fontSize: 30,
     marginBottom: 50,
     alignItems: "center",
     justifyContent: "center",
     fontWeight: "bold",
 
-  },
-  flx: {
-    flex: 2
+
   },
   imageBackground: {
     flex: 1,
     justifyContent: "center",
     resizeMode: "cover",
-    
 
+
+  },
+  flx: {
+    flex: 2
+  },
+  botao: {
+    paddingLeft: '11%',
+    fontSize: 18,
+
+  },
+  button: {
+    borderRadius: 25,
+    paddingVertical: 5,
+    paddingHorizontal: '5%',
+    backgroundColor: 'white',
+    marginBottom: 60,
+  },
+  buttonText: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
   }
 
 });

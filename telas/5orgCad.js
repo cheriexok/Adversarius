@@ -20,53 +20,57 @@ export default function OrgCad({ navigation }) {
   return (
     <View style={styles.flx}>
       <ImageBackground source={require('../assets/imgs/background.png')} style={styles.imageBackground}>
-      <View style={styles.container}>
-        <Image style={styles.image} source={require("../assets/imgs/binoculo.png")} />
-        <Text style={styles.title}>Informe seus dados!</Text>
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.TextInput}
-            placeholder="Nome"
-            placeholderTextColor="black"
-            onChangeText={(nome) => setNome(nome)}
-          />
+        <View style={styles.container}>
+
+          <Text style={styles.title}>Informe seus dados!</Text>
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Nome"
+              placeholderTextColor="black"
+              onChangeText={(nome) => setNome(nome)}
+            />
+          </View>
+
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="E-mail"
+              placeholderTextColor="black"
+              onChangeText={(email) => setEmail(email)}
+            />
+          </View>
+
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Senha"
+              placeholderTextColor="black"
+              secureTextEntry={true}
+              onChangeText={(senha) => setSenha(senha)}
+            />
+          </View>
+
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="CPF"
+              placeholderTextColor="black"
+              onChangeText={(cpf) => setCpf(cpf)}
+            />
+          </View>
+
+          <View style={styles.button}>
+            <View style={styles.buttonText}>
+              <WhiteButton text="Próximo" onPress={() => navigation.navigate('Complemente')} />
+            </View>
+          </View>
+
+          <TouchableOpacity>
+            <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>
+          </TouchableOpacity>
+
         </View>
-
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.TextInput}
-            placeholder="E-mail"
-            placeholderTextColor="black"
-            onChangeText={(email) => setEmail(email)}
-          />
-        </View>
-
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.TextInput}
-            placeholder="Senha"
-            placeholderTextColor="black"
-            secureTextEntry={true}
-            onChangeText={(senha) => setSenha(senha)}
-          />
-        </View>
-
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.TextInput}
-            placeholder="CPF"
-            placeholderTextColor="black"
-            onChangeText={(cpf) => setCpf(cpf)}
-          />
-        </View>
-
-        <WhiteButton text="Próximo" onPress={() => navigation.navigate('Orgfinal')} />
-
-        <TouchableOpacity>
-          <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>
-        </TouchableOpacity>
-
-      </View>
       </ImageBackground>
     </View>
   );
@@ -106,7 +110,7 @@ const styles = StyleSheet.create({
 
   forgot_button: {
     fontWeight: "bold",
-
+    fontSize: 18,
   },
 
   loginBtn: {
@@ -137,11 +141,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     resizeMode: "cover",
-    
+
 
   },
   flx: {
     flex: 2
+  },
+  botao: {
+    paddingLeft: '11%',
+    fontSize: 18,
+
+  },
+  button: {
+    borderRadius: 25,
+    paddingVertical: 5,
+    paddingHorizontal: '5%',
+    backgroundColor: 'white',
+    marginBottom: 60,
+  },
+  buttonText: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
   }
 });
 

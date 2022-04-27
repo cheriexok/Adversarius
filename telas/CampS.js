@@ -34,7 +34,13 @@ export default function Camp({ navigation }) {
               style={styles.TextI}
             />
             <Separator/>
-            <WhiteButton text="Próximo" onPress={() => navigation.navigate('Peneira')}/>
+
+            <View style={styles.button}>
+            <View style={styles.buttonText}>
+            <WhiteButton text="Próximo" onPress={() => navigation.navigate('Finalizar')}/>
+            </View>
+            </View>
+
           </View>
         </ImageBackground>   
       </View>
@@ -73,6 +79,24 @@ export default function Camp({ navigation }) {
         fontSize: 20,
         textAlign: 'center',
         marginHorizontal: '10%',
+      },
+      botao: {
+        paddingLeft: '11%',
+        fontSize: 18,
+    
+      },
+      button: {
+        borderRadius: 25,
+        paddingVertical: 5,
+        marginHorizontal: '30%',
+        backgroundColor: 'white',
+        marginBottom: 60,
+      },
+      buttonText: {
+        color: 'black',
+        fontWeight: 'bold',
+        fontSize: 20,
+        textAlign: 'center',
       }
 
   });

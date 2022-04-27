@@ -37,12 +37,12 @@ export function RootNavigation() {
       <Stack.Screen name='Cadastro' component={Cad} />
       <Stack.Screen name='Organização' component={OrgCad} />
       <Stack.Screen name='Atleta' component={AtletaCad} />
-      <Stack.Screen name='Atletafinal' component={Atletacadfinal} />
-      <Stack.Screen name='Orgfinal' component={Orgcadfinal} />
+      <Stack.Screen name='Finalize' component={Atletacadfinal} />
+      <Stack.Screen name='Complemente' component={Orgcadfinal} />
       <Stack.Screen name='Select' component={SelectS} />
-      <Stack.Screen name='Camp' component={Camp} />
-      <Stack.Screen name='Pcs' component={CriaPCS} />
-      <Stack.Screen name='Peneira' component={Peneirac} />
+      <Stack.Screen name='Campeonato' component={Camp} />
+      <Stack.Screen name='Peneira' component={CriaPCS} />
+      <Stack.Screen name='Finalizar' component={Peneirac} />
       <Stack.Screen
         name='TelaInicial'
         component={InitialRoute}

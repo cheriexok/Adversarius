@@ -4,8 +4,8 @@ import { StyleSheet, TouchableOpacity, Text, View } from 'react-native';
 export default function WhiteButton({ text, onPress }) {
     return (
         <TouchableOpacity onPress={onPress}>
-            <View style={styles.button}>
-                <Text style={styles.buttonText}>{text}</Text>
+            <View >
+                <Text style={styles.buttonTexto}>{text}</Text>
             </View>
         </TouchableOpacity>
     );
@@ -14,15 +14,12 @@ export default function WhiteButton({ text, onPress }) {
 const styles = StyleSheet.create({
     button: {
         borderRadius: 25,
-        paddingVertical: 12,
-        paddingHorizontal: 12,
+        paddingVertical: 5,
+        marginHorizontal: '30%',
         backgroundColor: 'white',   
     },
-    buttonText: {
-        color: 'black',
+    buttonTexto: {
         fontWeight: 'bold',
-        textTransform: 'uppercase',
         fontSize: 20,
-        textAlign: 'center',
     }
 });

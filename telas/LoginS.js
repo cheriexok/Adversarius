@@ -40,31 +40,39 @@ export default function Login({ navigation }) {
                 {message && (
                     <Text style={styles.Texto} >{message}</Text>
                 )}
-                <View style={styles.kk}>
-                    <Image source={require('../assets/imgs/binoculo.png')} style={styles.image} resizeMode='stretch' ></Image>
-                </View>
+               
                 <Text style={styles.Texto}>Login</Text>
 
                 <TextInput
                     style={styles.TextI}
-                    placeholder="USUÁRIO"
+                    placeholder="Usuário"
                     placeholderTextColor="#ccc"
                     onChangeText={(text) => setUser(text)}
                 />
                 <Separator />
                 <TextInput
                     style={styles.TextI}
-                    placeholder="SENHA"
+                    placeholder="Senha"
                     placeholderTextColor="#ccc"
                     secureTextEntry={true}
                     onChangeText={(text) => setPassword(text)}
                 />
                 <Separator />
+
+                <View style={styles.botao}>
+                    <WhiteButton text="Cadastre-se" onPress={() => navigation.navigate('Cadastro')} />
+                </View>
+
                 <Separator />
                 <Separator />
-                <WhiteButton text="Entrar" onPress={() => navigation.navigate('')} />
                 <Separator />
-                <WhiteButton text="Cadastre-se" onPress={() => navigation.navigate('Cadastro')} />
+
+                <View style={styles.button}>
+                    <View style={styles.buttonText}>
+                        <WhiteButton text="Entrar" onPress={() => navigation.navigate('')} />
+                    </View>
+                </View>
+
                 {/*<TouchableOpacity onPress={() => (navigation.navigate('TelaInicial'))}><Text>Fingir Login</Text></TouchableOpacity>*/}
             </ImageBackground>
         </View>
@@ -114,9 +122,27 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         marginHorizontal: '10%',
-    }
+    },
+    botao: {
+        paddingLeft: '11%',
+        fontSize: 18,
 
+    },
+    button: {
+        borderRadius: 25,
+        paddingVertical: 8,
+        marginHorizontal: '30%',
+        backgroundColor: 'white',
+    },
+    buttonText: {
+        color: 'black',
+        fontWeight: 'bold',
+        fontSize: 20,
+        textAlign: 'center',
+    }
 });
+
+
 
 const Separator = () => (
     <View style={styles.separator} />
