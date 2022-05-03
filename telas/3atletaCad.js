@@ -5,6 +5,7 @@ import WhiteButton from "../assets/functions/WhiteButton";
 import db from '../src/config/firebase';
 
 
+
 export default function AtletaCad({ navigation }) {
   const [nome, onChangeNome] = useState("");
 
@@ -31,6 +32,7 @@ export default function AtletaCad({ navigation }) {
 const insertData = async () => {
     setIsloading(true);
     const docRef = await addDoc(collection(db, "CadastroAtl"), {
+        nome : nome,
         email: email,
         senha: password,
         cpf: cpf,
@@ -97,9 +99,9 @@ useEffect(() => {
             </View>
           </View>
 
-          <TouchableOpacity>
-            <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>
-          </TouchableOpacity>
+          <View style={styles.botao}>
+            <WhiteButton text="Não tem uma conta? Entre." onPress={() => navigation.navigate('Login')} />
+          </View>
 
         </View>
       </ImageBackground>
@@ -129,6 +131,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
 
   },
+  botao: {
+    paddingLeft: '11%',
+    fontSize: 18,
+
+},
 
   TextInput: {
     height: 50,
@@ -179,11 +186,7 @@ const styles = StyleSheet.create({
   flx: {
     flex: 2
   },
-  botao: {
-    paddingLeft: '11%',
-    fontSize: 18,
 
-  },
   button: {
     borderRadius: 25,
     paddingVertical: 5,

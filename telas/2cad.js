@@ -31,9 +31,9 @@ Crie sua conta!</Text>
             </View>
           </View>
 
-          <TouchableOpacity style={styles.Entre}>
-            <Text style={styles.Texto1}>Já tem uma conta? Entre.</Text>
-          </TouchableOpacity>
+          <View style={styles.botao}>
+            <WhiteButton text="Não tem uma conta? Entre." onPress={() => navigation.navigate('Login')} />
+          </View>
 
         </View>
       </ImageBackground>
@@ -99,8 +99,8 @@ const styles = StyleSheet.create({
     marginTop: 107.5,
   },
   botao: {
-    paddingLeft: '11%',
-    fontSize: 18,
+    paddingLeft: '5%',
+    fontSize: 14,
 
   },
   button: {
@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
     textAlign: 'center',
-  }
+  },
+ 
 });
 
 

@@ -60,9 +60,9 @@ export default function Orgcadfinal({ navigation }) {
             </View>
           </View>
 
-          <TouchableOpacity>
-            <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>
-          </TouchableOpacity>
+          <View style={styles.botao}>
+            <WhiteButton text="Não tem uma conta? Entre." onPress={() => navigation.navigate('Login')} />
+          </View>
 
 
         </View>
@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
   },
+
 
   inputView: {
     backgroundColor: "#F8F8FF",
