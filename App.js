@@ -12,6 +12,7 @@ import Exibepeneira from './telas/exibepeneira';
 import Perfil from './telas/Perfil';
 import Cad from './telas/2cad';
 import Atletacadfinal from './telas/4atletaCadFinal';
+import Home from './telas/HomeS'
 
 import ActionBarImage from './telas/ActionBarImage';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -29,7 +30,7 @@ export default function App() {
 export function RootNavigation() {
   return (
     <Stack.Navigator initialRouteName="Login" screenOptions={{ headerRight: () => <ActionBarImage /> }} useLegacyImplementation={true}>
-      <Stack.Screen name="Login" component={Login} /*options={{drawerHideStatusBarTrue}}*/ />
+      <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name='Cadastro' component={Cad} />
       <Stack.Screen
         name='TelaInicial'
@@ -46,12 +47,13 @@ export function InitialRoute() {
     <Drawer.Navigator initialRouteName="Login" screenOptions={{ headerRight: () => <ActionBarImage /> }} useLegacyImplementation={true}>
       <Drawer.Screen name="Select" component={SelectS} />
       <Drawer.Screen name="CriaPCS" component={CriaPCS} />
-      <Drawer.Screen name="Login" component={Login} /*options={{drawerHideStatusBarTrue}}*/ />
+      <Drawer.Screen name="Login" component={Login} />
       <Drawer.Screen name="Atleta" component={AtletaCad} />
       <Drawer.Screen name="Organização" component={OrgCad} />
       <Drawer.Screen name="Peneira" component={Exibepeneira} />
       <Drawer.Screen name="Perfil" component={Perfil} />
       <Drawer.Screen name='Cadastro' component={Cad} />
+      <Drawer.Screen name='Home' component={Home} />
     </Drawer.Navigator>
   );
 };

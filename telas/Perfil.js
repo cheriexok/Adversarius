@@ -1,6 +1,18 @@
 import React from "react";
+import React, { useState, useEffect } from 'react';
 import { View, Text, ImageBackground, Image, StyleSheet, TextInput, StatusBar, TouchableOpacity } from 'react-native';
 import WhiteButton from "../assets/functions/WhiteButton";
+import SQLite from 'react-native-sqlite-storage';
+
+const db = SQLite.openDatabase(
+    {
+        name: 'AdversariusDB',
+        location: 'default',
+    },
+    () => { },
+    error => { console.log(error) }
+);
+
 
 export default function Perfil() {
   return (

@@ -13,76 +13,44 @@ const db = SQLite.openDatabase(
     error => { console.log(error) }
 );
 
-export default function Login({ navigation }) {
-
+export default function Home({ navigation, route }) {
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    //const [message, setMessage] = useState('');
-
+    
     useEffect(() => {
-        createTable();
         getData();
     }, []);
 
-    const createTable = () => {
-        db.transaction((tx) => {
-            tx.executeSql(
-                "CREATE TABLE IF NOT EXISTS "
-                +"Users"
-                +"(ID INTEGER PRIMARY KEY AUTOINCREMENT, Email TEXT, Password TEXT);"
-            )
-        })
-    }
-
-
-
-
-    const setData = async () => {
-        if (email.lenght == 0 || password.length == 0) {
-            Alert.alert('Aviso!', 'Por favor escreva algo.')  
-        } else {
-            try {
-                await db.transaction(async (tx)=>{
-                    // await tx.executeSql(
-                    //     "INSERT INTO Users (Email, Password) VALUES ('" + email + "'," + password + ")"
-                    // );
-                    await tx.executeSql(
-                        "INSERT INTO Users (Email, Password) VALUES (?,?)",
-                        [email, password]
-                    );
-                })
-                navigation.navigate('Cadastro');
-            } catch (error) {
-                console.log(error);
-            }
+    const getData = () => {
+        try {
+            // AsyncStorage.getItem('UserData')
+            //     .then(value => {
+            //         if (value != null) {
+            //             let user = JSON.parse(value);
+            //             setEmail(user.email);
+            //             setPassword(use.password);
+            //         }
+            //     })
+            db.transaction((tx)=>{
+                tx.executeSql(
+                    "SELECT Email, Password FROM Users",
+                    [],
+                    (tx, results)=>{
+                        var len = results.rows.length;
+                        if(len>0){
+                            var userEmail = results.rows.item(0).Email;
+                            var userPassword = results.rows.item(0).Password;
+                            setEmail(userEmail);
+                            setPassword(userPassword);
+                        }
+                    }
+                )
+            })
+        } catch (error) {
+            console.log(error);
         }
     }
-
-
-    //Fazer Login
-    // async function doLogin() {
-    //     let reqs = await fetch(config.urlRootPhp + 'Controller.php', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({
-    //             nameUser: user,
-    //             passwordUser: password
-    //         })
-    //     });
-    //     let ress = await reqs.json();
-    //     Keyboard.dismiss();
-    //     if (ress) {
-    //         navigation.navigate('Home');
-    //     } else {
-    //         setMessage('Usuário ou senha inválidos');
-    //         setTimeout(() => {
-    //             setMessage(null);
-    //         }, 3000);
-    //     }
-    // }
 
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>

@@ -32,6 +32,7 @@
     "react-native-navigation-drawer-extension": "^4.3.0",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.10.2",
+    "react-native-sqlite-storage": "^6.0.1",
     "react-native-web": "0.17.1",
     "react-native-webview": "^11.15.0",
     "twrnc": "^3.0.2"
