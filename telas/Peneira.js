@@ -3,7 +3,7 @@ import {Text, View, ImageBackground, StyleSheet, TextInput } from 'react-native'
 import WhiteButton from "../assets/functions/WhiteButton";
 import { Picker } from "@react-native-picker/picker";
 
-export default function CriaPCS({ navigation }) {
+export default function Peneira({ navigation }) {
 
   const [Sport, setSport] = useState(['Futebol','Voley','Tennis']);
   const [selectsport, setSelectSport] = useState('Sport')
@@ -34,10 +34,15 @@ export default function CriaPCS({ navigation }) {
               style={styles.TextI}
             />
             <Separator/>
+            <TextInput
+            placeholder="Número de times"
+            style={styles.TextI}
+          />
+          <Separator />
 
             <View style={styles.button}>
             <View style={styles.buttonText}>
-            <WhiteButton text="Próximo" onPress={() => navigation.navigate('Finalizar')}/>
+            <WhiteButton text="Próximo" onPress={() => navigation.navigate('Continuar')}/>
             </View>
             </View>
  
@@ -75,7 +80,6 @@ export default function CriaPCS({ navigation }) {
         backgroundColor: 'white',
         color: 'black',
         fontWeight: 'bold',
-        textTransform: 'uppercase',
         fontSize: 20,
         textAlign: 'center',
         marginHorizontal: '10%',

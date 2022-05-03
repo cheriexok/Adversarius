@@ -9,8 +9,9 @@ import {
   TouchableOpacity,
   ImageBackground
 } from "react-native";
+import WhiteButton from "../assets/functions/WhiteButton";
 
-export default function Peneirac() {
+export default function Peneirac({ navigation }) {
   const [idade, setIdade] = useState("");
   const [custo, setCusto] = useState("");
   const [data, setData] = useState("");
@@ -19,54 +20,52 @@ export default function Peneirac() {
   return (
     <View style={styles.flx}>
       <ImageBackground source={require('../assets/imgs/background.png')} style={styles.imageBackground}>
-      <View style={styles.container}>
-     
-        <Text style={styles.title}>Complemente os dados!</Text>
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.TextInput}
-            placeholder="Idade para participar"
-            placeholderTextColor="black"
-            onChangeText={(idade) => setIdade(idade)}
-          />
+        <View style={styles.container}>
+
+          <Text style={styles.title}>Complemente os dados!</Text>
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Idade para participar"
+              placeholderTextColor="black"
+              onChangeText={(idade) => setIdade(idade)}
+            />
+          </View>
+
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Custo para participar"
+              placeholderTextColor="black"
+              onChangeText={(custo) => setCusto(custo)}
+            />
+          </View>
+
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Data"
+              placeholderTextColor="black"
+              onChangeText={(data) => setData(data)}
+            />
+          </View>
+
+          <View style={styles.inputView}>
+            <TextInput
+              style={styles.TextInput}
+              placeholder="Hora"
+              placeholderTextColor="black"
+              onChangeText={(hora) => setHora(hora)}
+            />
+          </View>
+
+          <View style={styles.button}>
+            <View style={styles.buttonText}>
+              <WhiteButton text="Próximo" onPress={() => navigation.navigate('Peneirar')} />
+            </View>
+          </View>
+
         </View>
-
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.TextInput}
-            placeholder="Custo para participar"
-            placeholderTextColor="black"
-            onChangeText={(custo) => setCusto(custo)}
-          />
-        </View>
-
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.TextInput}
-            placeholder="Data"
-            placeholderTextColor="black"
-            onChangeText={(data) => setData(data)}
-          />
-        </View>
-
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.TextInput}
-            placeholder="Hora"
-            placeholderTextColor="black"
-            onChangeText={(hora) => setHora(hora)}
-          />
-        </View>
-
-        <TouchableOpacity style={styles.loginBtn}>
-          <Text>Próximo</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity>
-          <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>
-        </TouchableOpacity>
-
-      </View>
       </ImageBackground>
     </View>
   );
@@ -106,6 +105,7 @@ const styles = StyleSheet.create({
 
   forgot_button: {
     fontWeight: "bold",
+    fontSize: 18,
 
   },
 
@@ -137,11 +137,29 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     resizeMode: "cover",
-    
+
 
   },
   flx: {
     flex: 2
+  },
+  botao: {
+    paddingLeft: '11%',
+    fontSize: 18,
+
+  },
+  button: {
+    borderRadius: 25,
+    paddingVertical: 5,
+    paddingHorizontal: '5%',
+    backgroundColor: 'white',
+    marginBottom: 60,
+  },
+  buttonText: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 20,
+    textAlign: 'center',
   }
 });
 

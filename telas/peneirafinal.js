@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -8,62 +7,44 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
-  ImageBackground,
+  ImageBackground
 } from "react-native";
-import { bounce } from "react-native/Libraries/Animated/Easing";
 import WhiteButton from "../assets/functions/WhiteButton";
 
-export default function Orgcadfinal({ navigation }) {
-  const [tel, setTel] = useState("");
-  const [cnpj, setCnpj] = useState("");
-  const [dtnasci, setDtnasci] = useState("");
+export default function Peneirar({ navigation }) {
+  const [np, setNp] = useState("");
+  const [des, setDes] = useState("");
+  
 
   return (
     <View style={styles.flx}>
       <ImageBackground source={require('../assets/imgs/background.png')} style={styles.imageBackground}>
         <View style={styles.container}>
 
-
-          <Text style={styles.title}>Complete seu cadastro!</Text>
-
-          <StatusBar style="auto" />
+          <Text style={styles.title}>Complemente os dados!</Text>
           <View style={styles.inputView}>
             <TextInput
               style={styles.TextInput}
-              placeholder="Telefone"
+              placeholder="Nome da peneira"
               placeholderTextColor="black"
-              onChangeText={(tel) => setTel(tel)}
+              onChangeText={(np) => setNp(np)}
             />
           </View>
 
           <View style={styles.inputView}>
             <TextInput
               style={styles.TextInput}
-              placeholder="CNPJ"
+              placeholder="Descrição"
               placeholderTextColor="black"
-              onChangeText={(cnpj) => setCnpj(cnpj)}
-            />
-          </View>
-
-          <View style={styles.inputView}>
-            <TextInput
-              style={styles.TextInput}
-              placeholder="Data de nascimento"
-              placeholderTextColor="black"
-              onChangeText={(dtnasci) => setDtnasci(dtnasci)}
+              onChangeText={(des) => setDes(des)}
             />
           </View>
 
           <View style={styles.button}>
             <View style={styles.buttonText}>
-              <WhiteButton text="Criar" onPress={() => navigation.navigate('TelaInicial')} />
+              <WhiteButton text="Criar" onPress={() => navigation.navigate('Select')} />
             </View>
           </View>
-
-          <TouchableOpacity>
-            <Text style={styles.forgot_button}>Já tem uma conta? Entre.</Text>
-          </TouchableOpacity>
-
 
         </View>
       </ImageBackground>
@@ -106,6 +87,7 @@ const styles = StyleSheet.create({
   forgot_button: {
     fontWeight: "bold",
     fontSize: 18,
+
   },
 
   loginBtn: {
@@ -161,3 +143,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   }
 });
+

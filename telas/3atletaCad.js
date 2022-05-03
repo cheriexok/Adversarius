@@ -1,21 +1,48 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  Button,
-  TouchableOpacity,
-  ImageBackground
-} from "react-native";
+import React, { useState, useEffect } from "react";
+import {addDoc, collection, getDocs} from 'firebase/firestore';
+import { StyleSheet,Text, View, Image, TextInput,  TouchableOpacity, ImageBackground, } from "react-native";
 import WhiteButton from "../assets/functions/WhiteButton";
+import db from '../src/config/firebase';
+
 
 export default function AtletaCad({ navigation }) {
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [cpf, setCpf] = useState("");
+  const [nome, onChangeNome] = useState("");
+
+  const [email, onChangeEmail] = useState("");
+
+  const [senha, onChangeSenha] = useState("");
+
+  const [cpf, onChangeCpf] = useState("");
+
+  const [isLoading, setIsloading] = useState(false);
+
+  const request = async () => {
+    const querySnapshot = await getDocs(
+        collection(db, "CadastroAtl")
+    );
+
+    querySnapshot.forEach(
+        (doc) => {
+            console.log(doc.data());
+        }
+    );
+}
+
+const insertData = async () => {
+    setIsloading(true);
+    const docRef = await addDoc(collection(db, "CadastroAtl"), {
+        email: email,
+        senha: password,
+        cpf: cpf,
+
+    });
+    console.log("Document written with ID: ", docRef.id);
+    setIsloading(false);
+}
+
+useEffect(() => {
+
+}, [email])
 
   return (
     <View style={styles.flx}>
@@ -28,7 +55,8 @@ export default function AtletaCad({ navigation }) {
               style={styles.TextInput}
               placeholder="Nome"
               placeholderTextColor="black"
-              onChangeText={(nome) => setNome(nome)}
+              onChangeText={onChangeNome}
+              value={nome}
             />
           </View>
 
@@ -37,7 +65,8 @@ export default function AtletaCad({ navigation }) {
               style={styles.TextInput}
               placeholder="E-mail"
               placeholderTextColor="black"
-              onChangeText={(email) => setEmail(email)}
+              onChangeText={onChangeEmail}
+              value={email}
             />
           </View>
 
@@ -47,7 +76,8 @@ export default function AtletaCad({ navigation }) {
               placeholder="Senha"
               placeholderTextColor="black"
               secureTextEntry={true}
-              onChangeText={(senha) => setSenha(senha)}
+              onChangeText={onChangeSenha}
+              value={senha}
             />
           </View>
 
@@ -56,7 +86,8 @@ export default function AtletaCad({ navigation }) {
               style={styles.TextInput}
               placeholder="CPF"
               placeholderTextColor="black"
-              onChangeText={(cpf) => setCpf(cpf)}
+              onChangeText={onChangeCpf}
+              value={cpf}
             />
           </View>
 

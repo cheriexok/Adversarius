@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import SelectS from './telas/SelectS';
-import CriaPCS from './telas/CriaPCS';
+import Peneira from './telas/Peneira';
 import Login from './telas/LoginS';
 import AtletaCad from './telas/3atletaCad';
 import OrgCad from './telas/5orgCad';
@@ -15,6 +15,7 @@ import Atletacadfinal from './telas/4atletaCadFinal';
 import Orgcadfinal from './telas/6orgCadFinal';
 import Peneirac from './telas/peneira2';
 import Camp from './telas/CampS';
+import Peneirar from './telas/peneirafinal';
 
 
 import ActionBarImage from './telas/ActionBarImage';
@@ -39,10 +40,11 @@ export function RootNavigation() {
       <Stack.Screen name='Atleta' component={AtletaCad} />
       <Stack.Screen name='Finalize' component={Atletacadfinal} />
       <Stack.Screen name='Complemente' component={Orgcadfinal} />
-      <Stack.Screen name='Select' component={SelectS} />
       <Stack.Screen name='Campeonato' component={Camp} />
-      <Stack.Screen name='Peneira' component={CriaPCS} />
-      <Stack.Screen name='Finalizar' component={Peneirac} />
+      <Stack.Screen name='Peneira' component={Peneira} />
+      <Stack.Screen name='Continuar' component={Peneirac} />
+      <Stack.Screen name='Peneirar' component={Peneirar} />
+      <Stack.Screen name='Exibe' component={Exibepeneira} />
       <Stack.Screen
         name='TelaInicial'
         component={InitialRoute}
@@ -53,17 +55,16 @@ export function RootNavigation() {
     </Stack.Navigator>
   );
 };
+
+
 export function InitialRoute() {
   return (
-    <Drawer.Navigator initialRouteName="Login" screenOptions={{ headerRight: () => <ActionBarImage /> }} useLegacyImplementation={true}>
+    <Drawer.Navigator initialRouteName="Select" screenOptions={{ headerRight: () => <ActionBarImage /> }} useLegacyImplementation={true}>
       <Drawer.Screen name="Select" component={SelectS} />
-      <Drawer.Screen name="CriaPCS" component={CriaPCS} />
       <Drawer.Screen name="Login" component={Login} /*options={{drawerHideStatusBarTrue}}*/ />
-      <Drawer.Screen name="Atleta" component={AtletaCad} />
-      <Drawer.Screen name="Organização" component={OrgCad} />
-      <Drawer.Screen name="Peneira" component={Exibepeneira} />
       <Drawer.Screen name="Perfil" component={Perfil} />
-      <Drawer.Screen name='Cadastro' component={Cad} />
+      {/* <Drawer.Screen name='Campeonato' component={Camp} options={{headerShown: false}} /> */}
+       
     </Drawer.Navigator>
   );
 };

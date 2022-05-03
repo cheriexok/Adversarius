@@ -12,6 +12,9 @@ import {
 } from "react-native";
 import { bounce } from "react-native/Libraries/Animated/Easing";
 import WhiteButton from "../assets/functions/WhiteButton";
+import db from '../src/config/firebase';
+import {addDoc, collection, getDocs} from 'firebase/firestore';
+
 
 export default function Atletacadfinal({ navigation }) {
   const [tel, setTel] = useState("");
@@ -67,7 +70,7 @@ export default function Atletacadfinal({ navigation }) {
 
           <View style={styles.button}>
             <View style={styles.buttonText}>
-              <WhiteButton text="Criar" onPress={() => navigation.navigate('Select')} />
+              <WhiteButton text="Criar" onPress={() => navigation.navigate('TelaInicial')} />
             </View>
           </View>
 
