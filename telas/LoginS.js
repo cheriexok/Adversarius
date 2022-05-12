@@ -1,53 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import { Image, Button, ImageBackground, ScrollView, Keyboard, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View, StyleSheet } from "react-native";
+import { Image, Button, ImageBackground, ScrollView, Keyboard, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View, StyleSheet, Pressable } from "react-native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import WhiteButton from "../assets/functions/WhiteButton";
+import { db, auth } from '../src/config/firebase';
+import { useEffect, useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { getDoc, doc } from "@firebase/firestore";
+
 
 export default function Login({ navigation }) {
 
-    const [user, setUser] = useState(null);
-    const [password, setPassword] = useState(null);
-    const [message, setMessage] = useState(null);
+    const [email, setEmail] = useState()
+    const [senha, setSenha] = useState()
+    const [idDoUsuario, setIdDoUsuario] = useState()
 
-    //Fazer Login
-    async function doLogin() {
-        let reqs = await fetch(config.urlRootPhp + 'Controller.php', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                nameUser: user,
-                passwordUser: password
-            })
-        });
-        let ress = await reqs.json();
-        Keyboard.dismiss();
-        if (ress) {
-            navigation.navigate('Home');
-        } else {
-            setMessage('Usuário ou senha inválidos');
-            setTimeout(() => {
-                setMessage(null);
-            }, 3000);
-        }
+    const setDataIdUsuario = async (valor) => {
+        const usuario_id = await AsyncStorage.setItem('usuario_id', valor)
+        navigation.navigate('TelaInicial')
+        return usuario_id
     }
 
+    //setDoc(doc(db, "CadastroAtl", user_temp.uid),
+
+    const getUserId = async () => {
+        return await AsyncStorage.getItem("usuario_id");
+    };
+
+    const request = async () => {
+        console.log("Comecei o REquest")
+        console.log(email, senha)
+        signInWithEmailAndPassword(auth, email, senha)
+            .then((userCredential) => {
+                console.log('deu certo')
+                const user = userCredential.user;
+                getDoc(doc(db, "CadastroOrg", user.uid)).then((a) => {
+                    if (a.exists()) {
+                        AsyncStorage.setItem('tipoUsuario', 'org').then(() => { return true })
+                    }
+                });
+                getDoc(doc(db, "CadastroAtl", user.uid)).then((a) => {
+                    if (a.exists()) {
+                        AsyncStorage.setItem('tipoUsuario', 'atl').then(() => { return true })
+                    }
+                });
+                return setDataIdUsuario(user.uid)
+                //navigation.navigate('TelaInicial')
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(error)
+            });
+    }
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <ImageBackground source={require('../assets/imgs/background.png')} resizeMode="cover" style={styles.imageB} >
-                {message && (
+                {/* {message && (
                     <Text style={styles.Texto} >{message}</Text>
-                )}
-               
+                )} */}
+
                 <Text style={styles.Texto}>Login</Text>
 
                 <TextInput
                     style={styles.TextI}
-                    placeholder="Usuário"
+                    placeholder="E-mail"
                     placeholderTextColor="#ccc"
-                    onChangeText={(text) => setUser(text)}
+                    onChangeText={setEmail}
                 />
                 <Separator />
                 <TextInput
@@ -55,13 +72,16 @@ export default function Login({ navigation }) {
                     placeholder="Senha"
                     placeholderTextColor="#ccc"
                     secureTextEntry={true}
-                    onChangeText={(text) => setPassword(text)}
+                    onChangeText={setSenha}
                 />
                 <Separator />
 
                 <View style={styles.botao}>
                     <WhiteButton text="Cadastre-se" onPress={() => navigation.navigate('Cadastro')} />
+                   
                 </View>
+
+
 
                 <Separator />
                 <Separator />
@@ -69,7 +89,7 @@ export default function Login({ navigation }) {
 
                 <View style={styles.button}>
                     <View style={styles.buttonText}>
-                        <WhiteButton text="Entrar" onPress={() => navigation.navigate('')} />
+                        <WhiteButton text="Entrar" onPress={request} />
                     </View>
                 </View>
 

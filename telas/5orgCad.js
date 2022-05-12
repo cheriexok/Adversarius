@@ -1,21 +1,81 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TextInput,
-  Button,
-  TouchableOpacity,
-  ImageBackground
-} from "react-native";
+import React, { useState, useEffect } from "react";
+import { addDoc, collection, getDocs, doc, updateDoc, setDoc } from 'firebase/firestore';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ImageBackground, Button } from "react-native";
 import WhiteButton from "../assets/functions/WhiteButton";
+import db from '../src/config/firebase';
+import { auth } from '../src/config/firebase';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function OrgCad({ navigation }) {
-  const [nome, setNome] = useState("");
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [cpf, setCpf] = useState("");
+
+
+export default function AtletaCad({ navigation }) {
+  const [nome, onChangeNome] = useState("");
+
+  const [email, onChangeEmail] = useState("");
+
+  const [senha, onChangeSenha] = useState("");
+
+  const [cpf, onChangeCpf] = useState("");
+
+  const [isLoading, setIsloading] = useState(false);
+
+  const [user, setUser] = useState({});
+
+  const setDataIdUsuario = async (valor) => {
+    const teste = await AsyncStorage.setItem('usuario_id', valor)
+    // navigation.navigate('Inicial')
+
+  }
+
+  const request = async () => {
+
+    createUserWithEmailAndPassword(auth, email, senha)
+      .then((userCredential) => {
+        const newUser = userCredential.user
+        setDataIdUsuario(newUser.uid)
+        updateProfile(newUser, {
+          displayName: nome
+        })
+        setUser(newUser)
+        insertData(newUser)
+        // navigation.navigate('Finalize', insertData())
+      }).catch((error) => {
+        console.log(error);
+
+      })
+
+
+
+    // const querySnapshot = await getDocs(
+    //   collection(db, "CadastroAtl")
+    // );
+
+    // querySnapshot.forEach(
+    //   (doc) => {
+    //     console.log(doc.data());
+    //   }
+    // );
+  }
+
+
+
+  const insertData = async (user_temp) => {
+    await setDoc(doc(db, "CadastroOrg", user_temp.uid), {
+      nome: nome,
+      email: email,
+      senha: senha,
+      cpf: cpf,
+    });
+    setIsloading(false);
+    navigation.navigate('Complemente', {
+      paramKey: user_temp.uid
+    })
+  }
+
+  useEffect(() => {
+
+  }, [email])
 
   return (
     <View style={styles.flx}>
@@ -28,7 +88,8 @@ export default function OrgCad({ navigation }) {
               style={styles.TextInput}
               placeholder="Nome"
               placeholderTextColor="black"
-              onChangeText={(nome) => setNome(nome)}
+              onChangeText={onChangeNome}
+              value={nome}
             />
           </View>
 
@@ -37,7 +98,8 @@ export default function OrgCad({ navigation }) {
               style={styles.TextInput}
               placeholder="E-mail"
               placeholderTextColor="black"
-              onChangeText={(email) => setEmail(email)}
+              onChangeText={onChangeEmail}
+              value={email}
             />
           </View>
 
@@ -47,7 +109,8 @@ export default function OrgCad({ navigation }) {
               placeholder="Senha"
               placeholderTextColor="black"
               secureTextEntry={true}
-              onChangeText={(senha) => setSenha(senha)}
+              onChangeText={onChangeSenha}
+              value={senha}
             />
           </View>
 
@@ -56,18 +119,20 @@ export default function OrgCad({ navigation }) {
               style={styles.TextInput}
               placeholder="CPF"
               placeholderTextColor="black"
-              onChangeText={(cpf) => setCpf(cpf)}
+              onChangeText={onChangeCpf}
+              value={cpf}
             />
           </View>
 
           <View style={styles.button}>
             <View style={styles.buttonText}>
-              <WhiteButton text="Próximo" onPress={() => navigation.navigate('Complemente')} />
+              <WhiteButton text="Próximo" onPress={request} />
             </View>
+
           </View>
 
           <View style={styles.botao}>
-            <WhiteButton text="Não tem uma conta? Entre." onPress={() => navigation.navigate('Login')} />
+            <WhiteButton text="Já tem uma conta? Entre." onPress={() => navigation.navigate('Login')} />
           </View>
 
         </View>
@@ -87,7 +152,6 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
   },
-  
 
   inputView: {
     backgroundColor: "#F8F8FF",
@@ -97,6 +161,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: "center",
     fontWeight: "bold",
+
+  },
+  botao: {
+    paddingLeft: '11%',
+    fontSize: 18,
 
   },
 
@@ -112,6 +181,7 @@ const styles = StyleSheet.create({
   forgot_button: {
     fontWeight: "bold",
     fontSize: 18,
+
   },
 
   loginBtn: {
@@ -148,11 +218,7 @@ const styles = StyleSheet.create({
   flx: {
     flex: 2
   },
-  botao: {
-    paddingLeft: '11%',
-    fontSize: 18,
 
-  },
   button: {
     borderRadius: 25,
     paddingVertical: 5,

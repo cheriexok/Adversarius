@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Image, ImageBackground, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import SelectS from './telas/SelectS';
 import Peneira from './telas/Peneira';
@@ -16,6 +17,8 @@ import Orgcadfinal from './telas/6orgCadFinal';
 import Peneirac from './telas/peneira2';
 import Camp from './telas/CampS';
 import Peneirar from './telas/peneirafinal';
+import Home from './telas/Home';
+import auth from './telas/Logout';
 
 
 import ActionBarImage from './telas/ActionBarImage';
@@ -45,6 +48,7 @@ export function RootNavigation() {
       <Stack.Screen name='Continuar' component={Peneirac} />
       <Stack.Screen name='Peneirar' component={Peneirar} />
       <Stack.Screen name='Exibe' component={Exibepeneira} />
+      <Stack.Screen name="Home" component={Home} />
       <Stack.Screen
         name='TelaInicial'
         component={InitialRoute}
@@ -58,16 +62,52 @@ export function RootNavigation() {
 
 
 export function InitialRoute() {
+
+  const [quemSouEu, setQuemSouEu] = useState(false);
+
+  useEffect(() => {
+    AsyncStorage.getItem("tipoUsuario").then(res => {
+      if (res == "org") {
+        setQuemSouEu(true)
+      } if (res == "atl") {
+        setQuemSouEu(true)
+      }
+    });
+  })
+
+  return (
+    quemSouEu && (<MenuAtl/>)
+  )
+};
+
+const MenuOrg = () => {
   return (
     <Drawer.Navigator initialRouteName="Select" screenOptions={{ headerRight: () => <ActionBarImage /> }} useLegacyImplementation={true}>
       <Drawer.Screen name="Select" component={SelectS} />
+
       <Drawer.Screen name="Login" component={Login} /*options={{drawerHideStatusBarTrue}}*/ />
       <Drawer.Screen name="Perfil" component={Perfil} />
+
+      {/*<Drawer.Screen name="Sair" component={auth} />*/}
       {/* <Drawer.Screen name='Campeonato' component={Camp} options={{headerShown: false}} /> */}
-       
+
     </Drawer.Navigator>
-  );
-};
+  )
+}
+const MenuAtl = () => {
+  return (
+    <Drawer.Navigator initialRouteName="Select" screenOptions={{ headerRight: () => <ActionBarImage /> }} useLegacyImplementation={true}>
+      {/*<Drawer.Screen name="Home" component={Home} />*/}
+      <Drawer.Screen name="Select" component={SelectS} />
+      <Drawer.Screen name="Login" component={Login} /*options={{drawerHideStatusBarTrue}}*/ />
+      <Drawer.Screen name="Perfil" component={Perfil} />
+
+      {/*<Drawer.Screen name="Sair" component={auth} />*/}
+      {/* <Drawer.Screen name='Campeonato' component={Camp} options={{headerShown: false}} /> */}
+
+    </Drawer.Navigator>
+  )
+}
 
 const styles = StyleSheet.create({
   image: {

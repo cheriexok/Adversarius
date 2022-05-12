@@ -18,27 +18,21 @@ export default function Perfil() {
         <TextInput
           style={styles.text}
           placeholderTextColor="#003f5c"
+          placeholder="Vitor"
         ></TextInput>
         <Separator />
         <TextInput
           style={styles.text}
           placeholderTextColor="#003f5c"
+          placeholder="vitor@gmail.com"
         ></TextInput>
         <Separator />
         <TextInput
           style={styles.text}
           placeholderTextColor='#003f5cs'
+          placeholder="99999-9999"
         ></TextInput>
         <Separator />
-        <WhiteButton
-          text='Alterar Senha'
-          placeholderTextColor="#003f5c"
-        />
-        <Separator />
-        <WhiteButton
-          text='Histórico'
-          placeholderTextColor="#003f5c"
-        />
 
       </ImageBackground>
     </View>

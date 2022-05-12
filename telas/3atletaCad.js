@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {addDoc, collection, getDocs} from 'firebase/firestore';
-import { StyleSheet,Text, View, Image, TextInput,  TouchableOpacity, ImageBackground, } from "react-native";
+import { addDoc, collection, getDocs, doc, updateDoc, setDoc } from 'firebase/firestore';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ImageBackground, Button } from "react-native";
 import WhiteButton from "../assets/functions/WhiteButton";
 import db from '../src/config/firebase';
+import { auth } from '../src/config/firebase';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 
@@ -17,34 +20,62 @@ export default function AtletaCad({ navigation }) {
 
   const [isLoading, setIsloading] = useState(false);
 
+  const [user, setUser] = useState({});
+
+  const setDataIdUsuario = async (valor) => {
+    const teste = await AsyncStorage.setItem('usuario_id', valor)
+    // navigation.navigate('Inicial')
+
+  }
+
   const request = async () => {
-    const querySnapshot = await getDocs(
-        collection(db, "CadastroAtl")
-    );
 
-    querySnapshot.forEach(
-        (doc) => {
-            console.log(doc.data());
-        }
-    );
-}
+    createUserWithEmailAndPassword(auth, email, senha)
+      .then((userCredential) => {
+        const newUser = userCredential.user
+        setDataIdUsuario(newUser.uid)
+        updateProfile(newUser, {
+          displayName: nome
+        })
+        setUser(newUser)
+        insertData(newUser)
+        // navigation.navigate('Finalize', insertData())
+      }).catch((error) => {
+        console.log(error);
 
-const insertData = async () => {
-    setIsloading(true);
-    const docRef = await addDoc(collection(db, "CadastroAtl"), {
-        nome : nome,
-        email: email,
-        senha: password,
-        cpf: cpf,
+      })
 
+
+
+    // const querySnapshot = await getDocs(
+    //   collection(db, "CadastroAtl")
+    // );
+
+    // querySnapshot.forEach(
+    //   (doc) => {
+    //     console.log(doc.data());
+    //   }
+    // );
+  }
+
+
+
+  const insertData = async (user_temp) => {
+    await setDoc(doc(db, "CadastroAtl", user_temp.uid), {
+      nome: nome,
+      email: email,
+      senha: senha,
+      cpf: cpf,
     });
-    console.log("Document written with ID: ", docRef.id);
     setIsloading(false);
-}
+    navigation.navigate('Finalize', {
+      paramKey: user_temp.uid
+    })
+  }
 
-useEffect(() => {
+  useEffect(() => {
 
-}, [email])
+  }, [email])
 
   return (
     <View style={styles.flx}>
@@ -95,12 +126,13 @@ useEffect(() => {
 
           <View style={styles.button}>
             <View style={styles.buttonText}>
-              <WhiteButton text="Próximo" onPress={() => navigation.navigate('Finalize')} />
+              <WhiteButton text="Próximo" onPress={request} />
             </View>
+
           </View>
 
           <View style={styles.botao}>
-            <WhiteButton text="Não tem uma conta? Entre." onPress={() => navigation.navigate('Login')} />
+            <WhiteButton text="Já tem uma conta? Entre." onPress={() => navigation.navigate('Login')} />
           </View>
 
         </View>
@@ -135,7 +167,7 @@ const styles = StyleSheet.create({
     paddingLeft: '11%',
     fontSize: 18,
 
-},
+  },
 
   TextInput: {
     height: 50,

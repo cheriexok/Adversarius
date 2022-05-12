@@ -32,7 +32,7 @@ Crie sua conta!</Text>
           </View>
 
           <View style={styles.botao}>
-            <WhiteButton text="Não tem uma conta? Entre." onPress={() => navigation.navigate('Login')} />
+            <WhiteButton text="Já tem uma conta? Entre." onPress={() => navigation.navigate('Login')} />
           </View>
 
         </View>

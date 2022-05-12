@@ -1,13 +1,70 @@
-import React, {useState} from "react";
-import {Text, View, ImageBackground, StyleSheet, TextInput } from 'react-native';
+import React, { useState, useEffect } from "react";
+import { addDoc, collection, getDocs, doc, updateDoc, setDoc } from 'firebase/firestore';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ImageBackground, Button } from "react-native";
 import WhiteButton from "../assets/functions/WhiteButton";
+import db from '../src/config/firebase';
+import { auth } from '../src/config/firebase';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Picker } from "@react-native-picker/picker";
 
 export default function Peneira({ navigation }) {
 
+  
   const [Sport, setSport] = useState(['Futebol','Voley','Tennis']);
-  const [selectsport, setSelectSport] = useState('Sport')
+  const [esporte, setEsporte] = useState('Sport')
 
+  const [endereço, setEndereço] = useState("");
+  const [participantes, setPartipantes] = useState("");
+  const [times, setTimes] = useState("");
+  
+  
+ /* const [isLoading, setIsloading] = useState(false);
+
+  const [user, setUser] = useState({});
+
+  const setDataIdUsuario = async (valor) => {
+    const teste = await AsyncStorage.setItem('usuario_id', valor)
+    // navigation.navigate('Inicial')
+
+  }
+
+  const request = async () => {
+    createUserWithEmailAndPassword(auth, participantes, times)
+      .then((userCredential) => {
+        const newUser = userCredential.user
+        setDataIdUsuario(newUser.uid)
+        updateProfile(newUser, {
+          displayName: nome
+        })
+        setUser(newUser)
+        insertData(newUser)
+        // navigation.navigate('Finalize', insertData())
+      }).catch((error) => {
+        console.log(error);
+
+      })
+  }
+
+
+
+  const insertData = async (user_temp) => {
+    await setDoc(doc(db, "CriarPeneira", user_temp.uid), {
+      esporte: esporte,
+      endereço: endereço,
+      participantes: participantes,
+      times: times,
+    });
+    setIsloading(false);
+    navigation.navigate('Continuar', {
+      paramKey: user_temp.uid
+    })
+  }
+
+  useEffect(() => {
+
+  }, [endereço])*/
+  
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <ImageBackground source={require('../assets/imgs/background2.png')} resizeMode="stretch" style={styles.image} >
@@ -15,9 +72,10 @@ export default function Peneira({ navigation }) {
           <View >
             <Picker
               style={styles.TextI}
-              selectsport={selectsport}
+              esporte={esporte}
               onValueChange={(itemValue, itemIndex) =>
-                setSelectSport(itemValue)}
+                setEsporte(itemValue)
+              }
               >
                 {Sport.map(cr => {
                     return <Picker.Item label={cr} value={cr} />
@@ -27,22 +85,25 @@ export default function Peneira({ navigation }) {
             <TextInput
               placeholder="Endereço"
               style={styles.TextI}
+              onChangeText={(endereço) => setEndereço(endereço)}
             />
             <Separator/>
             <TextInput
               placeholder="Número de participantes"
               style={styles.TextI}
+              onChangeText={(participantes) => setPartipantes(participantes)}
             />
             <Separator/>
             <TextInput
             placeholder="Número de times"
             style={styles.TextI}
+            onChangeText={(times) => setTimes(times)}
           />
           <Separator />
 
             <View style={styles.button}>
             <View style={styles.buttonText}>
-            <WhiteButton text="Próximo" onPress={() => navigation.navigate('Continuar')}/>
+            <WhiteButton text="Próximo"  onPress={() => navigation.navigate('Continuar')}/>
             </View>
             </View>
  

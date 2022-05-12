@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,15 +10,72 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from "react-native";
-import { bounce } from "react-native/Libraries/Animated/Easing";
 import WhiteButton from "../assets/functions/WhiteButton";
+import db from '../src/config/firebase';
+import { addDoc, collection, getDocs, setDoc, doc, docRef, updateDoc } from 'firebase/firestore';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function Orgcadfinal({ navigation }) {
-  const [tel, setTel] = useState("");
+
+export default function Atletacadfinal({ navigation }) {
+  const [telefone, setTel] = useState("");
   const [cnpj, setCnpj] = useState("");
-  const [dtnasci, setDtnasci] = useState("");
+  const [dt_nasc, setDtnasci] = useState("");
+  const [isLoading, setIsloading] = useState(false);
+  const [userId, setUserId] = useState(false);
+
+
+  const getUserId = async () => {
+    const usuario_id = await AsyncStorage.getItem("usuario_id").then(res => {
+      setUserId(res)
+      console.log(res);
+
+    });
+  };
+
+
+  const request = async () => {
+    const querySnapshot = await getDocs(
+      collection(db, "CadastroOrg")
+    );
+
+    querySnapshot.forEach(
+      (doc) => {
+        console.log(doc.data());
+      }
+    );
+  }
+
+
+  const insertData = async () => {
+    //setIsloading(true);
+    console.log(userId)
+    const contDocRef = doc(db, "CadastroOrg", userId);
+    
+    await updateDoc(contDocRef, {
+      telefone: telefone,
+      cnpj: cnpj,
+      dt_nasc: dt_nasc,
+      souOrganizador: true,
+    }).then(() => {
+
+      console.log("Document written with ID: ", userId);
+      setIsloading(false);
+      navigation.navigate('Login')
+    });
+  }
+
+  useEffect(() => {
+
+  }, [telefone])
+  useEffect(() => {
+    getUserId()
+    if (userId != false) {
+    }
+  }, [userId])
+
 
   return (
+
     <View style={styles.flx}>
       <ImageBackground source={require('../assets/imgs/background.png')} style={styles.imageBackground}>
         <View style={styles.container}>
@@ -50,24 +107,23 @@ export default function Orgcadfinal({ navigation }) {
               style={styles.TextInput}
               placeholder="Data de nascimento"
               placeholderTextColor="black"
-              onChangeText={(dtnasci) => setDtnasci(dtnasci)}
+              onChangeText={(dt_nasc) => setDtnasci(dt_nasc)}
             />
           </View>
 
           <View style={styles.button}>
             <View style={styles.buttonText}>
-              <WhiteButton text="Criar" onPress={() => navigation.navigate('TelaInicial')} />
+              {/* <WhiteButton text="Cadastrar" onPress={() => navigation.navigate('TelaInicial', insertData())} /> */}
+              <WhiteButton text="Cadastrar" onPress={insertData} />
             </View>
           </View>
 
-          <View style={styles.botao}>
-            <WhiteButton text="Não tem uma conta? Entre." onPress={() => navigation.navigate('Login')} />
-          </View>
 
 
         </View>
       </ImageBackground>
     </View>
+
   );
 }
 
@@ -82,7 +138,11 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
   },
+  botao: {
+    paddingLeft: '11%',
+    fontSize: 18,
 
+  },
 
   inputView: {
     backgroundColor: "#F8F8FF",
@@ -107,6 +167,7 @@ const styles = StyleSheet.create({
   forgot_button: {
     fontWeight: "bold",
     fontSize: 18,
+
   },
 
   loginBtn: {
@@ -161,4 +222,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   }
+
 });

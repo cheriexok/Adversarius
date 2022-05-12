@@ -80,7 +80,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     color: 'black',
     fontWeight: 'bold',
-    textTransform: 'uppercase',
     fontSize: 20,
     textAlign: 'center',
     marginHorizontal: '10%',

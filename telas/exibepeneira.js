@@ -27,7 +27,7 @@ export default function Exibepeneira() {
       <ImageBackground source={require('../assets/imgs/background.png')} style={styles.imageBackground}>
         <View >
 
-          <Text onChangeText={(nome) => setNome(nome)} style={styles.title}>Peneira JEC!</Text>
+          <Text onChangeText={(nome) => setNome(nome)} style={styles.title}>Peneira JEC</Text>
 
           <View style={styles.row}>
             <Image style={styles.image} source={require("../assets/imgs/boneco.png")} /> 
@@ -35,7 +35,7 @@ export default function Exibepeneira() {
             <Text onChangeText={(valor) => setValor(valor)} style={styles.title4}>R$ 15,00</Text> 
           </View>
 
-          <Text onChangeText={(localizacao) => setLocalizacao(localizacao)} style={styles.title3}>Localização: Rua Falberto 196,Fatima , LOLO Camp</Text>
+          <Text onChangeText={(localizacao) => setLocalizacao(localizacao)} style={styles.title3}>Localização: Rua Max Colin 118, Glória.</Text>
 
           <Text onChangeText={(data) => setData(data)} style={styles.title3}>Data: 15/05/2022</Text>
 
@@ -47,8 +47,7 @@ export default function Exibepeneira() {
 
           <Text onChangeText={(idade) => setIdade(idade)} style={styles.title3}>Idade: 14 anos.</Text>
 
-          <Text onChangeText={(descricao) => setDescricao(descricao)} style={styles.title3}>Estamos procurando jovens talentos
-sub-15 para se desenvolver como futuro do JEC, os times serão montados aleatoriamente, e os jogadores avaliados individualmente.</Text>
+          <Text onChangeText={(descricao) => setDescricao(descricao)} style={styles.title3}>Recrutando jovens talentos.</Text>
 
 
         </View>
@@ -59,6 +58,7 @@ sub-15 para se desenvolver como futuro do JEC, os times serão montados aleatori
 
 const styles = StyleSheet.create({
   title: {
+    //marginTop: 0,
     fontSize: 30,
     paddingLeft: "25%",
     paddingRight: "25%",
